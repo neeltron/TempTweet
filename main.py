@@ -17,6 +17,15 @@ def fetch_weather_data(location):
 
 
 
+def tweet(temperature, city):
+  tweetapi = os.environ['tweetapi']
+  get = requests.get(url='https://maker.ifttt.com/trigger/tweelon/with/key/' + tweetapi + '?value1=' + str(temperature) + '&value2=' + str(city))
+  print(get)
+
+
 city = input("Enter your City: ")
 temperature = fetch_weather_data(city)
 print(temperature)
+tweet(temperature, city)
+
+
